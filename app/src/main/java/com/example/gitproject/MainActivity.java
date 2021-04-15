@@ -2,6 +2,7 @@ package com.example.gitproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +17,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_task);
+        setContentView(R.layout.activity_main_task_one);
 
         TextView outputOne = findViewById(R.id.output_text_one);
-        EditText inputNumber = findViewById(R.id.input_number);
+        EditText inputNumberTask1 = findViewById(R.id.input_number_task1);
         Button btnPay = findViewById(R.id.btn_pay);
+        Button btnNewScreen = findViewById(R.id.btn_newScreen);
         TextView outputTwo = findViewById(R.id.output_text_Two);
         CheckBox checkBox = findViewById(R.id.check_mark);
         Switch switchOne = findViewById(R.id.switch_one);
@@ -30,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Integer numberSum = Integer.valueOf(inputNumber.getText().toString());
+                    Integer numberSum = Integer.valueOf(inputNumberTask1.getText().toString());
                     if (numberSum > 0) {
-                        outputTwo.setText("Поставьте галочку и перейдите на следующую страницу");
+                        outputTwo.setText("Благодарим за сотрудничество!");
                     } else {
                         outputTwo.setText("Деньги положительными циферками пишутся!:) ");
                     }
@@ -41,5 +43,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+       btnNewScreen.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+               startActivity(intent);
+           }
+       });
     }
 }
